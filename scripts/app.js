@@ -3,16 +3,26 @@
     // Create your own kinvey application
 
     let baseUrl = "https://baas.kinvey.com";
-    let appKey = ""; // Place your appKey from Kinvey here...
-    let appSecret = ""; // Place your appSecret from Kinvey here...
-    var _guestCredentials = ""; // Create a guest user using PostMan/RESTClient/Fiddler and place his authtoken here...
+    let appKey = "kid_SJcY3fIs"; // Place your appKey from Kinvey here...
+    let appSecret = "96be0705baf14f9db2b7ab373aa9fd51"; // Place your appSecret from Kinvey here...
+    let _guestCredentials = "77a9f20f-d322-499a-a29d-27285354d52c.N6sgjOK1rRwqd0wVAaVYmrvCiQbNJ2TIDUkTsOCXw50="; // Create a guest user using PostMan/RESTClient/Fiddler and place his authtoken here...
 
     //Create AuthorizationService and Requester
+    let authService = new AuthorizationService(baseUrl,appKey,appSecret,_guestCredentials)
+    let requester = new Requester(authService);
 
     let selector = ".wrapper";
     let mainContentSelector = ".main-content";
 
     // Create HomeView, HomeController, UserView, UserController, PostView and PostController
+    let homeView = new HomeView(mainContentSelector, selector);
+    let homeController = new HomeController(homeView);
+
+    let userView = new UserView(mainContentSelector,selector);
+    let userController = new UserController(userView);
+
+    let postView = new PostView(mainContentSelector,selector);
+    let postController = new PostController(postView);
 
     initEventServices();
 
