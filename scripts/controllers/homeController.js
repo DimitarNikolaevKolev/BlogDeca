@@ -5,5 +5,11 @@ class HomeController{
         this._appKey = appkey;
         this._baseServiceUrl = baseUrl; // TODO
     
-}
+    }
+    showGuestPage(){
+        this._homeView.showGuestPage();
+    }
+    showUserPage(){
+        this._homeView.showUserPage();
+    }
 }

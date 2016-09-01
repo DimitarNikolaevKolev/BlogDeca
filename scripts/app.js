@@ -11,6 +11,8 @@
     let authService = new AuthorizationService(baseUrl,appKey,appSecret,_guestCredentials)
     let requester = new Requester(authService);
 
+    authService.initAuthorizationType("Kinvey");
+
     let selector = ".wrapper";
     let mainContentSelector = ".main-content";
 
@@ -28,38 +30,51 @@
 
     onRoute("#/", function () {
         // Check if user is logged in and if its not show the guest page, otherwise show the user page...
+        if(authService.isLoggedIn()){
+            homeController.showUserPage();
+        }else {
+            homeController.showGuestPage();
+        }
     });
 
     onRoute("#/post-:id", function () {
         // Create a redirect to one of the recent posts...
+
     });
 
     onRoute("#/login", function () {
         // Show the login page...
+        userController.showLoginPage();
     });
 
     onRoute("#/register", function () {
         // Show the register page...
+        userController.showRegisterPage();
     });
 
     onRoute("#/logout", function () {
         // Logout the current user...
+        userController.logout();
     });
 
     onRoute('#/posts/create', function () {
         // Show the new post page...
+        postController.showCreatePostPage();
     });
 
     bindEventHandler('login', function (ev, data) {
         // Login the user...
+        userController.login(data);
     });
 
     bindEventHandler('register', function (ev, data) {
         // Register a new user...
+        userController.register(data);
     });
 
     bindEventHandler('createPost', function (ev, data) {
         // Create a new post...
+        postController.createNewPost(data);
     });
 
     run('#/');

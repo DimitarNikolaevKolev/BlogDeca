@@ -3,4 +3,8 @@ class PostView{
         this._mainContentSelector = mainContentSelector;
         this._wrapperSelector = wrapperSelector;
     }
+
+    showCreatePostPage(){
+        
+    }
 }

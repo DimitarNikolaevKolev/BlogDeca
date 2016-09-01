@@ -4,6 +4,13 @@ class PostController{
         this._requester = requester;
         this._appKey = appkey;
         this._baseServiceUrl = baseUrl; //TODO
+    }
 
-}
+    createNewPost(){
+        
+    }
+    
+    showCreatePostPage(){
+        this._postView.showCreatePostPage();
+    }
 }

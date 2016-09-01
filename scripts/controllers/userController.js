@@ -6,4 +6,24 @@ class UserController{
         this._baseServiceUrl = baseUrl; //TODO
 
     }
+    showLoginPage(){
+        this._userView.showLoginPage();
+    }
+
+    showRegisterPage() {
+        this._userView.showRegisterPage();
+    }
+
+    register(data){
+
+    }
+
+    login(data){
+
+    }
+
+    logout(){
+        sessionStorage.clear();
+        
+    }
 }
