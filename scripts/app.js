@@ -18,13 +18,13 @@
 
     // Create HomeView, HomeController, UserView, UserController, PostView and PostController
     let homeView = new HomeView(mainContentSelector, selector);
-    let homeController = new HomeController(homeView);
+    let homeController = new HomeController(homeView, requester, baseUrl, appKey);
 
     let userView = new UserView(mainContentSelector,selector);
-    let userController = new UserController(userView);
+    let userController = new UserController(userView, requester, baseUrl, appKey);
 
     let postView = new PostView(mainContentSelector,selector);
-    let postController = new PostController(postView);
+    let postController = new PostController(postView, requester, baseUrl, appKey);
 
     initEventServices();
 
@@ -44,12 +44,12 @@
 
     onRoute("#/login", function () {
         // Show the login page...
-        userController.showLoginPage();
+        userController.showLoginPage(authService.isLoggedIn());
     });
 
     onRoute("#/register", function () {
         // Show the register page...
-        userController.showRegisterPage();
+        userController.showRegisterPage(authService.isLoggedIn());
     });
 
     onRoute("#/logout", function () {
@@ -59,7 +59,8 @@
 
     onRoute('#/posts/create', function () {
         // Show the new post page...
-        postController.showCreatePostPage();
+        let fullName = sessionStorage.getItem('fullName');
+        postController.showCreatePostPage(fullName, authService.isLoggedIn());
     });
 
     bindEventHandler('login', function (ev, data) {
