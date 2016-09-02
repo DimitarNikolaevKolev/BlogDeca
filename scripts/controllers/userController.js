@@ -15,6 +15,7 @@ class UserController{
     }
 
     register(data){
+        console.log(data);
         if(data.username.length < 6){
             showPopup('error','Your username is less than 6 symbols');
             return;
@@ -27,7 +28,7 @@ class UserController{
             showPopup('error','Your password do not match');
             return;
         }
-        if(data.password.length < 8 ){
+        if(data.password.length < 6 ){
             showPopup('error', 'Your password is less than 8 symbols');
             return;
         }

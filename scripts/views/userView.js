@@ -19,8 +19,8 @@ class UserView{
                 $(_that._mainContentSelector).html(renderedLogin);
 
                 $('#login-request-button').on('click',function () {
-                    let username = $('username').val();
-                    let password = $('password').val();
+                    let username = $('#username').val();
+                    let password = $('#password').val();
 
                     let data = {
                         username:username,
@@ -51,8 +51,8 @@ class UserView{
                 $(_that._mainContentSelector).html(renderedLogin);
 
                 $('#register-request-button').on('click',function () {
-                    let username = $('username').val();
-                    let password = $('password').val();
+                    let username = $('#username').val();
+                    let password = $('#password').val();
                     let confirmPassword = $('#pass-confirm').val();
                     let fullName = $('#full-name').val();
 
