@@ -48,7 +48,17 @@ class UserController{
     }
 
     login(data){
-    let requestUrl = this._base
+        let requestUrl = this._baseServiceUrl + "login";
+        this._requester.post(requestUrl, data,
+
+            function successCallback(response) {
+                showPopup('success', 'Successful login!');
+                redirectUrl('#/');
+            },
+            function errorCallback(response) {
+                showPopup('error', 'Unsuccessful login!')
+            }
+        );
     }
 
     logout(){

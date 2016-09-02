@@ -3,19 +3,58 @@ class HomeView{
         this._mainContentSelector = mainContentSelector;
         this._wrapperSelector = wrapperSelector;
     }
-    showGuestPage(mainData){
+    showGuestPage(mainData, sidebarData){
+        let _that = this;
+
        $.get('templates/welcome-guest.html',
            function (template) {
             let renderedTemplate = Mustache.render(template, null);
 
-               $(this._wrapperSelector).html(renderedTemplate);
-               $.get('templates/posts.html',
-                   function (template) {
+               $(_that._wrapperSelector).html(renderedTemplate);
+               $.get('templates/posts.html', function (template) {
+                   let blogPosts = {
+                       blogPosts:mainData
+                   };
 
-               })
+                   let renderedPosts = Mustache.render(template, blogPosts);
+                   $('.articles').html(renderedPosts);
+               });
+
+               $.get('templates/recent-posts.html', function (template) {
+                       let recentPosts = {
+                           recentPosts:sidebarData
+                       };
+
+                       let renderedPosts = Mustache.render(template, recentPosts);
+                       $('.recent-posts').html(renderedPosts)
+                   })
        })
     }
-    showUserPage(){
-        
+    showUserPage(mainData, sidebarData){
+        let _that = this;
+
+        $.get('templates/welcome-user.html',
+            function (template) {
+                let renderedTemplate = Mustache.render(template, null);
+
+                $(_that._wrapperSelector).html(renderedTemplate);
+                $.get('templates/posts.html', function (template) {
+                    let blogPosts = {
+                        blogPosts:mainData
+                    };
+
+                    let renderedPosts = Mustache.render(template, blogPosts);
+                    $('.articles').html(renderedPosts);
+                });
+
+                $.get('templates/recent-posts.html', function (template) {
+                    let recentPosts = {
+                        recentPosts:sidebarData
+                    };
+
+                    let renderedPosts = Mustache.render(template, recentPosts);
+                    $('.recent-posts').html(renderedPosts)
+                })
+            })
     }
 }
