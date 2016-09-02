@@ -6,12 +6,12 @@ class UserController{
         this._baseServiceUrl = baseUrl + "/user/" + appkey + "/"; //TODO
 
     }
-    showLoginPage(){
-        this._userView.showLoginPage();
+    showLoginPage(isLoggedIn){
+        this._userView.showLoginPage(isLoggedIn);
     }
 
-    showRegisterPage() {
-        this._userView.showRegisterPage();
+    showRegisterPage(isLoggedIn) {
+        this._userView.showRegisterPage(isLoggedIn);
     }
 
     register(data){
