@@ -3,7 +3,7 @@ class UserController{
         this._userView = userView;
         this._requester = requester;
         this._appKey = appkey;
-        this._baseServiceUrl = baseUrl + "/user/" + appkey + "/"; //TODO
+        this._baseServiceUrl = baseUrl + "/user/" + appkey + "/";
 
     }
     showLoginPage(isLoggedIn){
@@ -19,7 +19,7 @@ class UserController{
             showPopup('error','Your username is less than 6 symbols');
             return;
         }
-        if(data.fullName.length < 5){
+        if(data.fullname.length < 5){
             showPopup('error','Your Full Name is less than 5 symbols')
         return;
         }
@@ -52,6 +52,9 @@ class UserController{
         this._requester.post(requestUrl, data,
 
             function successCallback(response) {
+                sessionStorage.setItem('username',response.username);
+                sessionStorage.setItem('_authToken',response._kmd.authtoken);
+                sessionStorage.setItem('fullName',response.fullname);
                 showPopup('success', 'Successful login!');
                 redirectUrl('#/');
             },
